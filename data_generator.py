@@ -40,8 +40,8 @@ def make_data(num):
      [24, 'Cranium', 20], [25, 'Scrabble', 20]]
 
     product_name_card_game = [[26, 'Standard Deck of Cards', 10], [27, 'Cards Against Humanity', 25],
-    [28, 'Exploding Kittens', 20], [29, 'Coup', 15], [30, 'Uno', 5], [31, 'Magic:The Gathering', 50], 
-    [32, 'Yu-Gi-Oh:TCG', 30], [33, 'Pokémon:TCG', 30], [34, 'Apples to Apples', 25], [35, 'Monopoly:Deal', 10]]
+    [28, 'Exploding Kittens', 20], [29, 'Coup', 15], [30, 'Uno', 5], [31, 'Magic: The Gathering', 50], 
+    [32, 'Yu-Gi-Oh: TCG', 30], [33, 'Pokémon: TCG', 30], [34, 'Apples to Apples', 25], [35, 'Monopoly:Deal', 10]]
 
     product_name_doll = [[36, 'Barbie', 20], [37, 'Jade', 20], [38, 'Sasha', 20], [39, 'Yasmin', 20], 
     [40, 'Chloe', 20], [41, 'Superman', 30], [42, 'Leonardo', 35], [43, 'Donatello', 35], [44, 'Raphael', 35], 
@@ -60,7 +60,7 @@ def make_data(num):
                 'product_category': random.choice(product_category),
                 'payment_type': random.choice(payment_type),
                 'qty': random.randint(1,51),
-                'price': 'TBD',
+                'price': '',
                 'datetime': (f'{fake.date_time_this_decade()}'),
                 'country': 'TBD',
                 'city': 'TBD',
@@ -72,27 +72,27 @@ def make_data(num):
                 ]
     for i in fake_data:
         if i['product_category'] == 'Video Game':
-            i['product_name'] = random.choice(product_name_video_game)[1]
+            rand_index = random.randint(0,14)
+            i['product_name'] = product_name_video_game[rand_index][1]
+            i['product_id'] = product_name_video_game[rand_index][0]
+            i['price'] = (product_name_video_game[rand_index][2])*i['qty']
         elif i['product_category'] == 'Board Game':
-            i['product_name'] = random.choice(product_name_board_game)[1] 
+            rand_index = random.randint(0,13)
+            i['product_name'] = product_name_board_game[rand_index][1]
+            i['product_id'] = product_name_board_game[rand_index][0]
+            i['price'] = (product_name_board_game[rand_index][2])*i['qty']
         elif i['product_category'] == 'Card Game':
-            i['product_name'] = random.choice(product_name_card_game)[1]
+            rand_index = random.randint(0,11)
+            i['product_name'] = product_name_card_game[rand_index][1]
+            i['product_id'] = product_name_card_game[rand_index][0]
+            i['price'] = (product_name_card_game[rand_index][2])*i['qty']
         elif i['product_category'] == 'Doll':
-            i['product_name'] = random.choice(product_name_doll)[1]
-    # for i in fake_data:
+            rand_index = random.randint(0,14)
+            i['product_name'] = product_name_doll[rand_index][1]
+            i['product_id'] = product_name_doll[rand_index][0]
+            i['price'] = (product_name_doll[rand_index][2])*i['qty']
         
     
     print(fake_data)
 
 make_data(5)
-
-
-
-# country ()
-
-# city ()
-
-# ecommerce_website_name ()
-
-# failure_reason ()
-
