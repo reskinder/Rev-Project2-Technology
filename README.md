@@ -8,6 +8,10 @@
   - Data generator that produces a csv with 10k records with 5% rogue data
   - Data visualization tool to analyze the csv data
   - Graphic analysis on data answering the given Marketing Questions
+    - What is the top selling category of items? Per Country?
+    - How does the popularity of products change throughout the year? Per Country?
+    - Which locations see the highest traffic of sales?
+    - What times have the highest traffic of sales? Per Country?
 - Tech Stack
   - Git/GitHub
   - VS Code
