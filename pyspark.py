@@ -1,4 +1,4 @@
-#testing if "sync changes" works
+
 import findspark
 findspark.init()
 
@@ -28,7 +28,6 @@ spark = SparkSession\
 sc = spark.sparkContext
 
 ## If we wish to initialize SQLContext:
-sqlcontext = SQLContext(spark)
 
 ## We can use 'sc' to create RDDs and DataFrames
 # rdd = sc.parallelize([(1,"Jacob","IT"),(2,"Bob","Sales"),(3,"Sam","IT"),(4,"Cindy","HR")])
@@ -48,7 +47,7 @@ sqlcontext = SQLContext(spark)
 # spark.sql("SELECT Dept, count(*) FROM Employees GROUP BY Dept").show()
 
 
-toydf = spark.read.option("header", "true").csv("created_data.csv")
+toydf = spark.read.option("header", "true").csv("/Users/rianislam/Desktop/project 2 por/Rev-Project2-Technology/Data Generator/created_data.csv")
 
 
 
@@ -59,9 +58,11 @@ toydf = toydf.withColumn("price", col("price").cast("int"))
 toydf = toydf.withColumn("payment_txn_id", col("payment_txn_id").cast("int"))
 toydf = toydf.withColumn("product_id", col("product_id").cast("int"))
 
+
+
 # What is the top selling category of items? Per Country?
-toydf.select("country","product_category","payment_txn_success","qty").where(toydf.payment_txn_success!="NULL")\
-.groupBy("country").agg({"qty":"sum"})
+# toydf.select("country","product_category","payment_txn_success","qty").where(toydf.payment_txn_success!="NULL")\
+# .groupBy("country").agg({"qty":"sum"}).show()
 
 
 #How does the popularity of products change throughout the year? Per Country?
@@ -76,15 +77,18 @@ toydf.select("country","product_category","payment_txn_success","qty").where(toy
 
 
 
-#Which website had the most sales?
-
+#4. Which website had the most sales?
+toydf.select("ecommerce_website_name","qty",).where(toydf.payment_txn_success=="Y")\
+.groupBy("ecommerce_website_name").agg({"qty":"sum"}).orderBy(col("sum(qty)").desc()).show(1, truncate=False)
 
 
 #Which the most common form of payment failure?
 
 
 
-#Which is the most common form of payment method?
+#6. Which is the most common form of payment method?
+toydf.select("payment_type","qty",).where(toydf.payment_txn_success=="Y")\
+.groupBy("payment_type").agg({"qty":"sum"}).orderBy(col("sum(qty)").desc()).show()
 
 # SELECT "created_data.csv"."country"AS"country","created_data.csv".
 # "product_category"AS"product_category",SUM("created_data.csv"."qty")AS s
