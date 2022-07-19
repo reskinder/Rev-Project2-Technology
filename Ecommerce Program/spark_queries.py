@@ -7,9 +7,7 @@
 import findspark
 findspark.init()
 
-from pyspark import SparkContext, sql, SparkConf
-from pyspark.sql import SparkSession, Row, HiveContext, SQLContext
-import pyspark
+from pyspark.sql import SparkSession, SQLContext
 from pyspark.sql.functions import col, quarter, year, hour
 import os
 import sys
