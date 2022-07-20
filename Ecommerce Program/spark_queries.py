@@ -152,18 +152,18 @@ def marketQueries(menuChoice):
         # Year 2020
         print("Year 2020:")
         marketQ7.select("country", "hour", "qty").where(marketQ7.payment_txn_success=="Y").where(marketQ7.year==2020)\
-        .groupBy(marketQ7.country.alias("Country"), marketQ7.hour.alias("Hour")).agg(sum(marketQ7.qty).alias("Quantity"))\
-        .orderBy(col("Country").desc(), col("Quantity").desc(), col("Hour").asc()).show(50, truncate=False)
+        .groupBy(marketQ7.country.alias("Country"), marketQ7.hour.alias("24-Hour")).agg(sum(marketQ7.qty).alias("Quantity"))\
+        .orderBy(col("Country").desc(), col("Quantity").desc(), col("24-Hour").asc()).show(50, truncate=False)
         # Year 2021
         print("Year 2021:")
         marketQ7.select("country", "hour", "qty").where(marketQ7.payment_txn_success=="Y").where(marketQ7.year==2021)\
-        .groupBy(marketQ7.country.alias("Country"), "hour").agg(sum(marketQ7.qty).alias("Quantity"))\
-        .orderBy(col("Country").desc(), col("Quantity").desc(), col("Hour").asc()).show(50, truncate=False)
+        .groupBy(marketQ7.country.alias("Country"), marketQ7.hour.alias("24-Hour")).agg(sum(marketQ7.qty).alias("Quantity"))\
+        .orderBy(col("Country").desc(), col("Quantity").desc(), col("24-Hour").asc()).show(50, truncate=False)
         # Year 2022
         print("Year 2022:")
         marketQ7.select("country", "hour", "qty").where(marketQ7.payment_txn_success=="Y").where(marketQ7.year==2022)\
-        .groupBy(marketQ7.country.alias("Country"), marketQ7.hour.alias("Hour")).agg(sum(marketQ7.qty).alias("Quantity"))\
-        .orderBy(col("Country").desc(), col("Quantity").desc(), col("Hour").asc()).show(50, truncate=False)
+        .groupBy(marketQ7.country.alias("Country"), marketQ7.hour.alias("24-Hour")).agg(sum(marketQ7.qty).alias("Quantity"))\
+        .orderBy(col("Country").desc(), col("Quantity").desc(), col("24-Hour").asc()).show(50, truncate=False)
 
 # Set Up PySpark Environment Variables
 os.environ['PYSPARK_PYTHON'] = sys.executable
