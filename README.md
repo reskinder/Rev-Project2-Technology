@@ -13,6 +13,10 @@
     - How does the popularity of products change throughout the year? Per Country?
     - Which locations see the highest traffic of sales?
     - What times have the highest traffic of sales? Per Country?
+  - Extra Marketing Questions Created
+    - Which is the most common form of payment failure?
+    - Which is the most common form of payment method?
+    - Which website had the most sales?
 - Tech Stack
   - Git/GitHub
   - VS Code
