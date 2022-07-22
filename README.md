@@ -18,3 +18,6 @@
   - VS Code
   - Python3
     - CSV, Pandas, Random, Faker
+  - Apache Spark
+  - Tableau
+  - Trello
